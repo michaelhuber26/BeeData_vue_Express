@@ -1,6 +1,7 @@
 const mongodb = require("mongodb");
 const ttnData = require("./routes/ttn/ttnData");
 
+// zugriff auf MongoDB Atlas DB
 async function loadDataCollection() {
   const client = await mongodb.MongoClient.connect(
     "mongodb+srv://beedataRW:mihuanga1@cluster0.xbjbc.mongodb.net/beedata?retryWrites=true&w=majority",
@@ -12,7 +13,7 @@ async function loadDataCollection() {
   return client.db("beedata").collection("data");
 }
 
-
+// schreibt TTN Daten in MongoDB Atlas DB
 const syncToDb = async () => {
   try {
     const data = await loadDataCollection();

@@ -28,6 +28,7 @@ router.delete("/:id", async (req, res) => {
   res.status(200).send();
 });
 
+// zugriff auf MongoDB Atlas DB
 async function loadDataCollection() {
   const client = await mongodb.MongoClient.connect(
     "mongodb+srv://beedataRW:mihuanga1@cluster0.xbjbc.mongodb.net/beedata?retryWrites=true&w=majority",
@@ -39,4 +40,5 @@ async function loadDataCollection() {
   return client.db("beedata").collection("data");
 }
 
+// API die Zugriff auf MongoDB Datenbank erlaubt (noch jedem von egal welcher IP)
 module.exports = router;

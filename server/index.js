@@ -16,10 +16,11 @@ app.get("/sync", (req, res) => {
   dbInsert();
 });
 
-
+// Zugriff(get, post, put, delete) auf Datenbank über API
 const data = require("./routes/api/data");
 app.use("/api/data", data);
 
+// Zugriff(get) Daten von TTN StI
 const ttnData = require("./routes/ttn/get-data");
 app.use("/ttn/get-data", ttnData);
 

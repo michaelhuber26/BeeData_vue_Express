@@ -1,10 +1,9 @@
 const axios = require("axios");
 
-// https://stackoverflow.com/questions/48980380/returning-data-from-axios-api
-
+//http req auf TTN Storage Integration API
 const ttnData = async () => {
   const response = await axios.get(
-    "https://esp32-1channel-gateway-test.data.thethingsnetwork.org/api/v2/query?last=7d",
+    "https://esp32-1channel-gateway-test.data.thethingsnetwork.org/api/v2/query?last=1d",
     {
       headers: {
         Accept: "application/json",
@@ -37,5 +36,5 @@ function formatData(data) {
   return formattedData;
 }
 
-
+// Daten von TTN Storage integration neu formatiert
 module.exports = ttnData;
