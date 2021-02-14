@@ -37,7 +37,7 @@ async function loadDataCollection() {
       useUnifiedTopology: true,
     }
   );
-  return client.db("beedata").collection("data");
+  return client.db("beedata").collection("dataV3");
 }
 
 // API die Zugriff auf MongoDB Datenbank erlaubt (noch jedem von egal welcher IP)
