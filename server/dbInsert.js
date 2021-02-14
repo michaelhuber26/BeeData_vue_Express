@@ -10,14 +10,19 @@ async function loadDataCollection() {
       useUnifiedTopology: true,
     }
   );
-  return client.db("beedata").collection("data");
+  return client.db("beedata").collection("dataV3");
 }
 
 // schreibt TTN Daten in MongoDB Atlas DB
 const syncToDb = async () => {
   try {
+    console.log("SYNC TO DB");
     const data = await loadDataCollection();
     const toInsert = await ttnData();
+    if (toInsert == []) {
+      console.log("No new Data to insert to MongoDB DB");
+      return;
+    }
     await data.insertMany(toInsert);
   } catch (error) {
     console.error("CATCH MONGODBINSERT: " + error);

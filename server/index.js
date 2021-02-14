@@ -16,6 +16,10 @@ app.get("/sync", (req, res) => {
   dbInsert();
 });
 
+dbInsert();
+//calls dbInsert every 1h
+setInterval(dbInsert, 1000 * 60 * 60); // ms s min  == 1h
+
 // Zugriff(get, post, put, delete) auf Datenbank über API
 const data = require("./routes/api/data");
 app.use("/api/data", data);
